@@ -1,0 +1,4 @@
+.DS_Store
+.vagrant
+secrets.yml
+host_vars/space/secret.yml

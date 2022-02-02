@@ -1,0 +1,4 @@
+---
+roles:
+  - name: samdoran.fish
+  - name: artis3n.tailscale

@@ -1,0 +1,11 @@
+
+hostname: "{{ inventory_hostname }}"
+
+timezone: Europe/Paris
+username: thomas
+guid: "1000"
+shell: /usr/bin/fish
+ntp_timezone: "{{ timezone }}"
+locale: en_US.UTF-8
+
+lan_network: "{{ '.'.join(ansible_default_ipv4.address.split('.')[0:3]) }}.0/24"

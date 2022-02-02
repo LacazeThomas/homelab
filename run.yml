@@ -1,0 +1,34 @@
+---
+#
+# Tasks and roles for all hosts
+#
+- hosts: space
+  gather_facts: no
+
+- hosts: space
+  become: yes
+  roles:
+    - role: system
+      tags: 
+        - system
+
+    - role: samdoran.fish
+      become: yes
+      tags: 
+        - fish
+        
+    - role: docker
+      tags: 
+        - docker
+  
+    - role: artis3n.tailscale
+      tags: 
+        - tailscale
+
+    - role: user
+      tags: 
+        - user
+
+    # - role: rclone 
+    #   tags: 
+    #     - rclone
