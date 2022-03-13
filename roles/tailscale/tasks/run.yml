@@ -1,9 +1,0 @@
----
-- name: Include OS-specific variables
-  include_vars: "all.yml"
-
-- name: Configure tailscale
-  roles:
-    - role: artis3n.tailscale
-      vars:
-        tailscale_auth_key: "{{ tailscale_auth_key }}"
