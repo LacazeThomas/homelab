@@ -1,52 +1,18 @@
 ---
+- name: Include OS-specific variables
+  include_vars: "all.yml"
+
 - name: Install list of packages
   apt:
     update_cache: yes
     name: "{{item}}"
     state: present
-  with_items:
-    - sudo
-    - nload
-    - htop
-    - gpg
-    - fail2ban
+  with_items: "{{ system_deps }}"
 
-
-
-- name: Configure fail2ban jail.conf
+- name: Configure fuse for non root user
   template:
-    src: jail.conf.j2
-    dest: '/etc/fail2ban/jail.conf'
+    src: fuse.conf.j2
+    dest: '/etc/fuse.conf'
     owner: "root"
     group: "root"
-    mode: 0644
-
-- name: Configure fail2ban telegram.conf
-  template:
-    src: telegram.conf.j2
-    dest: '/etc/fail2ban/action.d/telegram.conf'
-    owner: "root"
-    group: "root"
-    mode: 0644
-
-- name: Creates directory script for fail2ban
-  file:
-    path: /etc/fail2ban/scripts
-    state: directory
-    owner: "root"
-    group: "root"
-    mode: 0775
-    recurse: yes
-
-- name: Configure fail2ban fail2ban-telegram.sh
-  template:
-    src: fail2ban-telegram.sh.j2
-    dest: '/etc/fail2ban/scripts/fail2ban-telegram.sh'
-    owner: "root"
-    group: "root"
-    mode: 755
-
-- name: Restart service fail2ban, in all cases
-  service:
-    name: fail2ban
-    state: restarted
+    mode: 644

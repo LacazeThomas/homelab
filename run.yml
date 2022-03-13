@@ -20,10 +20,10 @@
     - role: docker
       tags: 
         - docker
-  
-    - role: artis3n.tailscale
+
+    - role: disks
       tags: 
-        - tailscale
+        - disks
 
     - role: user
       tags: 
@@ -32,19 +32,3 @@
     - role: fubarhouse.golang
       tags:
         - golang
-
-    - role: sprat.mergerfs
-      tags: 
-        - mergerfs
-        
-      # vars:
-      #   mergerfs_mounts:
-      #     - path: /mnt/data
-      #       branches:
-      #         - /mnt/data1
-      #         - /mnt/data2
-      #       options: allow_other,use_ino
-
-    # - role: rclone 
-    #   tags: 
-    #     - rclone

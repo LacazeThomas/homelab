@@ -1,0 +1,9 @@
+---
+
+system_deps: 
+  - 'sudo'
+  - 'nload'
+  - 'htop'
+  - 'gpg'
+  - 'fuse'
+  - 'ncdu'
