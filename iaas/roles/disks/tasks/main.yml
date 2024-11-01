@@ -1,9 +1,0 @@
----
-- name: Creates for disks
-  file:
-    path: "{{ item }}"
-    state: directory
-    owner: "{{ username }}"
-    group: "{{ username }}"
-    mode: 0775
-  with_items: "{{mount_dir}}"
