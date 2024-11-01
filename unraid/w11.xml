@@ -41,21 +41,37 @@
   <features>
     <acpi/>
     <apic/>
-    <hyperv mode='custom'>
-      <relaxed state='on'/>
-      <vapic state='on'/>
-      <spinlocks state='on' retries='8191'/>
-      <vendor_id state='on' value='none'/>
+    <hyperv mode="custom">
+      <relaxed state="on"/>
+      <vapic state="on"/>
+      <spinlocks state="on" retries="8191"/>
+      <vpindex state="on"/>
+      <runtime state="on"/>
+      <synic state="on"/>
+      <stimer state="on">
+        <direct state="on"/>
+      </stimer>
+      <reset state="off"/>
+      <vendor_id state="on" value="AuthenticAMD"/>
+      <frequencies state="on"/>
+      <reenlightenment state="on"/>
+      <tlbflush state="on"/>
+      <ipi state="on"/>
+      <evmcs state="off"/>
     </hyperv>
+    <kvm>
+      <hidden state="on"/>
+    </kvm>
+    <vmport state="off"/>
+    <ioapic driver="kvm"/>
   </features>
-  <cpu mode='custom' match='exact' check='full'>
-    <model fallback='forbid'>EPYC-IBPB</model>
-    <topology sockets='1' dies='1' cores='6' threads='2'/>
-    <feature policy='disable' name='monitor'/>
-    <feature policy='require' name='x2apic'/>
-    <feature policy='require' name='hypervisor'/>
-    <feature policy='disable' name='svm'/>
-    <feature policy='require' name='topoext'/>
+  <cpu mode="custom" match="exact" check="none">
+    <model fallback="allow">EPYC-IBPB</model>
+    <topology sockets="1" dies="1" cores="6" threads="2"/>
+    <feature policy="require" name="svm"/>
+    <feature policy="require" name="apic"/>
+    <feature policy="require" name="invtsc"/>
+    <feature policy="require" name="topoext"/>
   </cpu>
   <clock offset='localtime'>
     <timer name='rtc' tickpolicy='catchup'/>
