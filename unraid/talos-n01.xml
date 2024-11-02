@@ -5,8 +5,8 @@
   <metadata>
     <vmtemplate xmlns="unraid" name="Linux" icon="linux.png" os="linux"/>
   </metadata>
-  <memory unit='KiB'>8388608</memory>
-  <currentMemory unit='KiB'>8388608</currentMemory>
+  <memory unit='KiB'>8126464</memory>
+  <currentMemory unit='KiB'>8126464</currentMemory>
   <memoryBacking>
     <hugepages/>
     <source type='memfd'/>

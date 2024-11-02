@@ -5,8 +5,8 @@
   <metadata>
     <vmtemplate xmlns="unraid" name="Linux" icon="linux.png" os="linux"/>
   </metadata>
-  <memory unit='KiB'>8388608</memory>
-  <currentMemory unit='KiB'>8388608</currentMemory>
+  <memory unit='KiB'>8126464</memory>
+  <currentMemory unit='KiB'>8126464</currentMemory>
   <memoryBacking>
     <hugepages/>
     <source type='memfd'/>
@@ -109,7 +109,7 @@
       <address type='pci' domain='0x0000' bus='0x00' slot='0x07' function='0x2'/>
     </controller>
     <interface type='bridge'>
-      <mac address='52:54:00:b5:21:79'/>
+      <mac address='52:54:00:b5:21:80'/>
       <source bridge='br0'/>
       <model type='virtio-net'/>
       <address type='pci' domain='0x0000' bus='0x01' slot='0x00' function='0x0'/>
