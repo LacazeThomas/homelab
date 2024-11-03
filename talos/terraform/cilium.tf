@@ -1,11 +1,11 @@
-provider "helm" {
-  kubernetes {
-    config_path = "~/.kube/config"
-  }
-}
+resource "kubernetes_namespace" "cilium-system" {
+  metadata {
+    labels = {
+      "pod-security.kubernetes.io/enforce" = "privileged"
+    }
 
-provider "kubernetes" {
-  config_path = "~/.kube/config"
+    name = "cilium-system"
+  }
 }
 
 resource "helm_release" "cilium" {
@@ -15,7 +15,7 @@ resource "helm_release" "cilium" {
   chart            = "cilium"
   create_namespace = true
   namespace        = "cilium-system"
-  version         = "1.16.3"
+  version          = "1.16.3"
 
   set {
     name  = "ipam.mode"
@@ -108,7 +108,7 @@ resource "kubernetes_manifest" "cilium_l2_announcement_policy" {
       name = "l2policy"
     }
     spec = {
-      externalIPs = true
+      externalIPs     = true
       loadBalancerIPs = true
     }
   }

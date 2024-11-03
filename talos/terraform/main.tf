@@ -19,46 +19,11 @@ provider "argocd" {
   use_local_config = true
 }
 
-resource "argocd_application" "helm" {
-  metadata {
-    name      = "longhorn"
-    namespace = "argocd"
+provider "helm" {
+  kubernetes {
+    config_path = "~/.kube/config"
   }
-
-  spec {
-
-    project = "default"
-
-    destination {
-      server    = "https://kubernetes.default.svc"
-      namespace = "longhorn-system"
-    }
-
-    sync_policy {
-      automated {
-        prune       = true
-        self_heal   = true
-        allow_empty = true
-      }
-
-      sync_options = ["Validate=false"]
-      retry {
-        limit = "5"
-        backoff {
-          duration     = "30s"
-          max_duration = "2m"
-          factor       = "2"
-        }
-      }
-    }
-
-    source {
-      repo_url        = "https://charts.longhorn.io"
-      chart           = "longhorn"
-      target_revision = "1.7.2"
-      helm {
-        release_name = "longhorn"
-      }
-    }
-  }
+}
+provider "kubernetes" {
+  config_path = "~/.kube/config"
 }
