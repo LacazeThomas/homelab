@@ -2,3 +2,8 @@
 .vagrant
 secrets.yml
 host_vars/space/secret.yml
+talos/terraform/.terraform
+talos/terraform/.terraform.lock.hcl
+talos/terraform/secrets.tfvars
+*.tfstate
+talos/terraform/terraform.tfstate.backup
