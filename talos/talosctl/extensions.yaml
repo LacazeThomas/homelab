@@ -1,0 +1,7 @@
+customization:
+  systemExtensions:
+    officialExtensions:
+      - siderolabs/iscsi-tools
+      - siderolabs/util-linux-tools
+
+#curl -X POST --data-binary @extensions.yaml https://factory.talos.dev/schematics
