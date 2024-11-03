@@ -4,6 +4,10 @@ provider "helm" {
   }
 }
 
+provider "kubernetes" {
+  config_path = "~/.kube/config"
+}
+
 resource "helm_release" "cilium" {
   name = "cilium"
 
@@ -76,5 +80,36 @@ resource "helm_release" "cilium" {
   set {
     name  = "hubble.enabled"
     value = "false"
+  }
+}
+
+resource "kubernetes_manifest" "cilium_load_balancer_ip_pool" {
+  manifest = {
+    apiVersion = "cilium.io/v2alpha1"
+    kind       = "CiliumLoadBalancerIPPool"
+    metadata = {
+      name = "defaultlbpool"
+    }
+    spec = {
+      blocks = [
+        {
+          start = "192.168.1.240"
+        }
+      ]
+    }
+  }
+}
+
+resource "kubernetes_manifest" "cilium_l2_announcement_policy" {
+  manifest = {
+    apiVersion = "cilium.io/v2alpha1"
+    kind       = "CiliumL2AnnouncementPolicy"
+    metadata = {
+      name = "l2policy"
+    }
+    spec = {
+      externalIPs = true
+      loadBalancerIPs = true
+    }
   }
 }
