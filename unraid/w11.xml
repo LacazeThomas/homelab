@@ -12,59 +12,27 @@
     <source type='memfd'/>
     <access mode='shared'/>
   </memoryBacking>
-  <vcpu placement="static" current="18">24</vcpu>
-  <vcpus>
-    <vcpu id="0" enabled="yes" hotpluggable="no"/>
-    <vcpu id="1" enabled="yes" hotpluggable="yes"/>
-    <vcpu id="2" enabled="yes" hotpluggable="yes"/>
-    <vcpu id="3" enabled="yes" hotpluggable="yes"/>
-    <vcpu id="4" enabled="yes" hotpluggable="yes"/>
-    <vcpu id="5" enabled="yes" hotpluggable="yes"/>
-    <vcpu id="6" enabled="no" hotpluggable="yes"/>
-    <vcpu id="7" enabled="no" hotpluggable="yes"/>
-    <vcpu id="8" enabled="yes" hotpluggable="yes"/>
-    <vcpu id="9" enabled="yes" hotpluggable="yes"/>
-    <vcpu id="10" enabled="yes" hotpluggable="yes"/>
-    <vcpu id="11" enabled="yes" hotpluggable="yes"/>
-    <vcpu id="12" enabled="yes" hotpluggable="yes"/>
-    <vcpu id="13" enabled="yes" hotpluggable="yes"/>
-    <vcpu id="14" enabled="no" hotpluggable="yes"/>
-    <vcpu id="15" enabled="no" hotpluggable="yes"/>
-    <vcpu id="16" enabled="yes" hotpluggable="yes"/>
-    <vcpu id="17" enabled="yes" hotpluggable="yes"/>
-    <vcpu id="18" enabled="yes" hotpluggable="yes"/>
-    <vcpu id="19" enabled="yes" hotpluggable="yes"/>
-    <vcpu id="20" enabled="yes" hotpluggable="yes"/>
-    <vcpu id="21" enabled="yes" hotpluggable="yes"/>
-    <vcpu id="22" enabled="no" hotpluggable="yes"/>
-    <vcpu id="23" enabled="no" hotpluggable="yes"/>
-  </vcpus>
+  <vcpu placement='static'>18</vcpu>
   <iothreads>2</iothreads>
   <cputune>
-    <vcpupin vcpu="0" cpuset="6"/>
-    <vcpupin vcpu="1" cpuset="18"/>
-    <vcpupin vcpu="2" cpuset="7"/>
-    <vcpupin vcpu="3" cpuset="19"/>
-    <vcpupin vcpu="4" cpuset="8"/>
-    <vcpupin vcpu="5" cpuset="20"/>
-    <vcpupin vcpu="6" cpuset="0"/>
-    <vcpupin vcpu="7" cpuset="12"/>
-    <vcpupin vcpu="8" cpuset="9"/>
-    <vcpupin vcpu="9" cpuset="21"/>
-    <vcpupin vcpu="10" cpuset="10"/>
-    <vcpupin vcpu="11" cpuset="22"/>
-    <vcpupin vcpu="12" cpuset="11"/>
-    <vcpupin vcpu="13" cpuset="23"/>
-    <vcpupin vcpu="14" cpuset="1"/>
-    <vcpupin vcpu="15" cpuset="13"/>
-    <vcpupin vcpu="16" cpuset="3"/>
-    <vcpupin vcpu="17" cpuset="15"/>
-    <vcpupin vcpu="18" cpuset="4"/>
-    <vcpupin vcpu="19" cpuset="16"/>
-    <vcpupin vcpu="20" cpuset="5"/>
-    <vcpupin vcpu="21" cpuset="17"/>
-    <vcpupin vcpu="22" cpuset="2"/>
-    <vcpupin vcpu="23" cpuset="14"/>
+    <vcpupin vcpu='0' cpuset='3'/>
+    <vcpupin vcpu='1' cpuset='4'/>
+    <vcpupin vcpu='2' cpuset='5'/>
+    <vcpupin vcpu='3' cpuset='6'/>
+    <vcpupin vcpu='4' cpuset='7'/>
+    <vcpupin vcpu='5' cpuset='8'/>
+    <vcpupin vcpu='6' cpuset='9'/>
+    <vcpupin vcpu='7' cpuset='10'/>
+    <vcpupin vcpu='8' cpuset='11'/>
+    <vcpupin vcpu='9' cpuset='15'/>
+    <vcpupin vcpu='10' cpuset='16'/>
+    <vcpupin vcpu='11' cpuset='17'/>
+    <vcpupin vcpu='12' cpuset='18'/>
+    <vcpupin vcpu='13' cpuset='19'/>
+    <vcpupin vcpu='14' cpuset='20'/>
+    <vcpupin vcpu='15' cpuset='21'/>
+    <vcpupin vcpu='16' cpuset='22'/>
+    <vcpupin vcpu='17' cpuset='23'/>
     <emulatorpin cpuset="0,12"/>
     <iothreadpin iothread="1" cpuset="1,13"/>
     <iothreadpin iothread="2" cpuset="2,14"/>
@@ -104,12 +72,14 @@
     <vmport state='off'/>
     <ioapic driver='kvm'/>
   </features>
-  <cpu mode='host-passthrough' check='none' migratable='on'>
-    <topology sockets='1' cores='12' threads='2'/>
+  <cpu mode='host-passthrough' check='none'>
+    <topology sockets='1' dies='1' cores='9' threads='2'/>
+    <cache mode='passthrough'/>
+    <feature policy='require' name='topoext'/>
     <feature policy='require' name='svm'/>
     <feature policy='require' name='apic'/>
+    <feature policy='require' name='hypervisor'/>
     <feature policy='require' name='invtsc'/>
-    <feature policy='require' name='topoext'/>
   </cpu>
   <clock offset='localtime'>
     <timer name='rtc' tickpolicy='catchup'/>
